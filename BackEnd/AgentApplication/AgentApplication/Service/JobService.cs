@@ -27,10 +27,11 @@ namespace AgentApplication.Service
             try
             {
                 using UnitOfWork unitOfWork = new(new ProjectContext());
-                IEnumerable<Job> enteites = unitOfWork.Jobs.GetAll();
+                return unitOfWork.Jobs.GetAllJobs();
 
-                return enteites;
             }
+
+
             catch (Exception e)
             {
                 _logger.LogError($"Error in JobService in GetAllJobs Method { e.Message} in { e.StackTrace}");
@@ -38,6 +39,43 @@ namespace AgentApplication.Service
             }
         }
 
-        
+        public override Job Add(Job entity)
+        {
+            if (entity == null)
+            {
+                return null;
+            }
+            Job job = new Job();
+
+            try
+            {
+                using UnitOfWork unitOfWork = new(new ProjectContext());
+                job.Description = entity.Description;
+                job.Position = entity.Position;
+                job.Precondition = entity.Precondition;
+                job.DescriptionActivity = entity.DescriptionActivity;
+                job.Business = unitOfWork.Businesses.Get(entity.Business.Id);
+                
+                unitOfWork.Jobs.Add(job);
+                _ = unitOfWork.Complete();
+
+            }
+
+            catch (Exception e)
+            {
+                _logger.LogError($"Error in JobService in Add {e.Message} {e.StackTrace}");
+                return null;
+            }
+
+            return job;
+        }
+
+        public Job GetJob(long id)
+        {
+            using UnitOfWork unitOfWork = new(new ProjectContext());
+            return unitOfWork.Jobs.GetJob(id);
+        }
+
+
     }
 }

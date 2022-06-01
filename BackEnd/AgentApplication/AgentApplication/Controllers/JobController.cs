@@ -47,5 +47,11 @@ namespace AgentApplication.Controllers
             }
             return Ok(jobService.GetAllJobs());
         }
+        [Route("getJob/{id}")]
+        [HttpGet]
+        public IActionResult GetJob(long id)
+        {
+            return Ok(jobService.GetJob(id));
+        }
     }
 }

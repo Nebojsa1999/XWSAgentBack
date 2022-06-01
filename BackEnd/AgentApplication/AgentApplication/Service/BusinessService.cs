@@ -94,8 +94,7 @@ namespace AgentApplication.Service
                 Business business = new Business();
                 business = unitOfWork.Businesses.GetBusiness(businessId);
                 business.Activated = true;
-                User owner = userService.Get(business.Owner.Id);
-                owner.Role = Model.Enum.Role.BusinessOwner;
+                business.Owner.Role = Model.Enum.Role.BusinessOwner;
                 unitOfWork.Businesses.Update(business);
                 _ = unitOfWork.Complete();
                 return true;

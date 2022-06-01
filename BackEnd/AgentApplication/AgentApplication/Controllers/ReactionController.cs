@@ -39,8 +39,7 @@ namespace AgentApplication.Controllers
         [Route("getReactionsByJobId/{jobId}")]
         [HttpGet]
         public IActionResult GetReactionsByJobId(long jobId)
-        {
-        
+        {    
 
             return Ok(reactionService.GetReactionsByJobId(jobId));
         }

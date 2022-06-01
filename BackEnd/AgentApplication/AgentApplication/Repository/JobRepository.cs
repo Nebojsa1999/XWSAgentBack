@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AgentApplication.Model;
 using AgentApplication.Repository.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgentApplication.Repository
 {
@@ -13,5 +14,14 @@ namespace AgentApplication.Repository
         {
 
         }
+        public IEnumerable<Job> GetAllJobs()
+        {
+            return ProjectContext.Jobs.Include(x=> x.Business).Include(x=>x.Business.Owner).ToList();
+        }
+        public Job GetJob(long id)
+        {
+            return ProjectContext.Jobs.Where(x => x.Id == id).Include(x => x.Business).Include(x => x.Business.Owner).FirstOrDefault();
+        }
+
     }
 }

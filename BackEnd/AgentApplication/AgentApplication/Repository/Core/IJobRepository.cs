@@ -8,5 +8,8 @@ namespace AgentApplication.Repository.Core
 {
     public interface IJobRepository : IBaseRepository<Job>
     {
+        public IEnumerable<Job> GetAllJobs();
+        public Job GetJob(long id);
+
     }
 }

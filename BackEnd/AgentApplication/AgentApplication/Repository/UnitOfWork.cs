@@ -15,6 +15,7 @@ namespace AgentApplication.Repository
         public IBusinessRepository Businesses { get; private set; }
         public IReactionRepository Reactions { get; private set; }
         public IJobRepository Jobs { get; private set; }
+        public IApiKeyRepository ApiKeys { get; private set; }
         public UnitOfWork(ProjectContext context)
         {
             _context = context;
@@ -22,6 +23,7 @@ namespace AgentApplication.Repository
             Users = new UserRepository(_context);
             Reactions = new ReactionRepository(_context);
             Jobs = new JobRepository(_context);
+            ApiKeys = new ApiKeyRepository(_context);
         }
 
         public IBaseRepository<TEntity> GetRepository<TEntity>() where TEntity : class

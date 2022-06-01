@@ -9,5 +9,6 @@ namespace AgentApplication.Service.Core
     public interface IJobService : IBaseService<Job>
     {
         public IEnumerable<Job> GetAllJobs();
+        public Job GetJob(long id);
     }
 }

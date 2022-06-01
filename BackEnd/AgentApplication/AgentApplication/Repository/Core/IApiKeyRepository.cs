@@ -8,5 +8,6 @@ namespace AgentApplication.Repository.Core
 {
     public interface IApiKeyRepository : IBaseRepository<ApiKey>
     {
+        public ApiKey GetApiKeyFromUser(long id);
     }
 }

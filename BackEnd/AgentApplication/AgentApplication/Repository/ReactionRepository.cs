@@ -17,7 +17,7 @@ namespace AgentApplication.Repository
 
         public IEnumerable<Reaction> GetReactionsByJobId(long jobId)
         {
-            return ProjectContext.Reactions.Where(x=>x.Job.Id == jobId).Include(x=> x.Job).Include(x=> x.User).ToList();
+            return ProjectContext.Reactions.Where(x=>x.Job.Id == jobId).Include(x=> x.Job).Include(x=> x.User).Include(x=>x.Job.Business).ToList();
         }
     }
 }
