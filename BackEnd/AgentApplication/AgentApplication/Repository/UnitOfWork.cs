@@ -12,10 +12,16 @@ namespace AgentApplication.Repository
         private Dictionary<string, dynamic> _repositories;
         private readonly ProjectContext _context;
         public IUserRepository Users { get; private set; }
+        public IBusinessRepository Businesses { get; private set; }
+        public IReactionRepository Reactions { get; private set; }
+        public IJobRepository Jobs { get; private set; }
         public UnitOfWork(ProjectContext context)
         {
             _context = context;
+            Businesses = new BusinessRepository(_context);
             Users = new UserRepository(_context);
+            Reactions = new ReactionRepository(_context);
+            Jobs = new JobRepository(_context);
         }
 
         public IBaseRepository<TEntity> GetRepository<TEntity>() where TEntity : class

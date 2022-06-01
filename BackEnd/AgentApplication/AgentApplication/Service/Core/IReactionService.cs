@@ -7,10 +7,9 @@ using AgentApplication.Model.DTO;
 
 namespace AgentApplication.Service.Core
 {
-    public interface IUserService : IBaseService<User>
+    public interface IReactionService : IBaseService<Reaction>
     {
-        User GetUserWithUserName(string userName);
-        User AddUser(RegisterDTO entity);
-
+        public Reaction AddReaction(ReactionDTO reactionDTO);
+        public IEnumerable<Reaction> GetReactionsByJobId(long jobId);
     }
 }

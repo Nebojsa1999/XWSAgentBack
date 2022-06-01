@@ -36,6 +36,10 @@ namespace AgentApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBusinessService, BusinessService>();
+            services.AddScoped<IJobService, JobService>();
+            services.AddScoped<IReactionService, ReactionService>();
+            services.AddScoped<IApiKeyService, ApiKeyService>();
             ProjectConfiguration config = new ProjectConfiguration();
             Configuration.Bind("ProjectConfiguration", config);
             services.AddSingleton(config);

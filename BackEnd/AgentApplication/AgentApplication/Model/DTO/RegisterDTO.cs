@@ -16,5 +16,6 @@ namespace AgentApplication.Model.DTO
         public string DateOfBirth { get; set; }
         public bool Enabled { get; set; }
         public string PhoneNumber { get; set; }
+        
     }
 }

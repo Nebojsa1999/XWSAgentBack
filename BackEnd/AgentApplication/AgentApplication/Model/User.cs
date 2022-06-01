@@ -23,6 +23,7 @@ namespace AgentApplication.Model
         public Gender Gender { get; set; }
         public bool Privacy { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public Role Role { get; set; }
     
     }
 }

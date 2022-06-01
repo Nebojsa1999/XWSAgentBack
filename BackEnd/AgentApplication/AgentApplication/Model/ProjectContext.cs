@@ -46,6 +46,11 @@ namespace AgentApplication.Model
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Business> Businesses { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Reaction> Reactions { get; set; }
+
+        public DbSet<ApiKey> ApiKeys { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured)
@@ -54,7 +59,8 @@ namespace AgentApplication.Model
             }
 
 
-            optionsBuilder.UseSqlServer("Server=mssql;Database=usersAgent;User Id=sa;Password=Your_password123;");
+            //optionsBuilder.UseSqlServer("Server=mssql;Database=usersAgent;User Id=sa;Password=Your_password123;");
+            optionsBuilder.UseSqlServer("data source=localhost; Initial Catalog=agentXWS;Integrated Security=True;");
 
         }
     }

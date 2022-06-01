@@ -21,6 +21,31 @@ namespace AgentApplication.Util
             }
         }
 
+        public static Grade gradeString(string grade)
+        {
+            if(grade == "One")
+            {
+                return Grade.One;
+            }
+
+            else if(grade == "Two")
+            {
+                return Grade.Two;
+            }
+            else if (grade == "Three")
+            {
+                return Grade.Three;
+            }
+            else if (grade == "Four")
+            {
+                return Grade.Four;
+            }
+            else 
+            {
+                return Grade.Five;
+            }
+        }
+
 
 
     }

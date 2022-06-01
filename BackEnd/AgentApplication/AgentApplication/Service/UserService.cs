@@ -43,6 +43,7 @@ namespace AgentApplication.Service
                 user.Name = entity.Name;
                 user.Surname = entity.Surname;
                 user.PhoneNumber = entity.PhoneNumber;
+                user.Role = Model.Enum.Role.User;
                 user.DateOfBirth = DateTime.Parse(entity.DateOfBirth);
                 unitOfWork.Users.Add(user);
                 _ = unitOfWork.Complete();
