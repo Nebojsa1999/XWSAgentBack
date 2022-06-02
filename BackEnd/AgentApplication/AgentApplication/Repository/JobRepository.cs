@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AgentApplication.Repository
 {
-    public class JobRepository: BaseRepository<Job>, IJobRepository
+    public class JobRepository : BaseRepository<Job>, IJobRepository
     {
         public JobRepository(ProjectContext context) : base(context)
         {
@@ -16,11 +16,16 @@ namespace AgentApplication.Repository
         }
         public IEnumerable<Job> GetAllJobs()
         {
-            return ProjectContext.Jobs.Include(x=> x.Business).Include(x=>x.Business.Owner).ToList();
+            return ProjectContext.Jobs.Include(x => x.Business).Include(x => x.Business.Owner).ToList();
         }
         public Job GetJob(long id)
         {
             return ProjectContext.Jobs.Where(x => x.Id == id).Include(x => x.Business).Include(x => x.Business.Owner).FirstOrDefault();
+        }
+
+        public IEnumerable<Job> GetJobsByUserId(long id)
+        {
+            return ProjectContext.Jobs.Where(x => x.Business.Owner.Id == id).Include(x => x.Business).Include(x => x.Business.Owner).ToList();
         }
 
     }

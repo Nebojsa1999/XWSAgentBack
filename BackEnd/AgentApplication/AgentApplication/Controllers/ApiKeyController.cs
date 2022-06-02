@@ -35,5 +35,12 @@ namespace AgentApplication.Controllers
             return Ok(apiKeyService.Add(apiKey));
 
         }
+
+        [Route("getApiKeyByUserId/{id}")]
+        [HttpGet]
+        public IActionResult GetApiKeyByUserId(long id)
+        {
+            return Ok(apiKeyService.GetApiKeyFromUser(id));
+        }
     }
 }

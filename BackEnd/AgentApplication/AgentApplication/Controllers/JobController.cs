@@ -32,8 +32,24 @@ namespace AgentApplication.Controllers
 
             }
 
-            return Ok(jobService.Add(job));
+            return Ok(jobService.AddJob(job));
         }
+
+        [Route("addJobWithoutPublish")]
+        [HttpPost]
+        public IActionResult AddJobWithoutPublish(Job job)
+        {
+            User userCurrent = GetCurrentUser();
+            if (userCurrent == null)
+            {
+                return BadRequest("Must be logged in");
+
+            }
+
+            return Ok(jobService.AddJobWithoutPublish(job));
+        }
+
+
 
         [Route("getAllJobs")]
         [HttpGet]
@@ -52,6 +68,13 @@ namespace AgentApplication.Controllers
         public IActionResult GetJob(long id)
         {
             return Ok(jobService.GetJob(id));
+        }
+
+        [Route("getJobsByUserId/{id}")]
+        [HttpGet]
+        public IActionResult GetJobsByUserId(long id)
+        {
+            return Ok(jobService.GetJobsByUserId(id));
         }
     }
 }

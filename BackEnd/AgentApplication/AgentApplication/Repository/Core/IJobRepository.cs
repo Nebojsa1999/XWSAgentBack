@@ -10,6 +10,8 @@ namespace AgentApplication.Repository.Core
     {
         public IEnumerable<Job> GetAllJobs();
         public Job GetJob(long id);
+        public IEnumerable<Job> GetJobsByUserId(long id);
+
 
     }
 }

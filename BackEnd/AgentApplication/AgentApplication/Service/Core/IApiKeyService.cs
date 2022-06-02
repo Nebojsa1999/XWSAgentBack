@@ -8,5 +8,6 @@ namespace AgentApplication.Service.Core
 {
     public interface IApiKeyService : IBaseService<ApiKey>
     {
+        public ApiKey GetApiKeyFromUser(long id);
     }
 }

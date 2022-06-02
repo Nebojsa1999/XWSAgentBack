@@ -10,5 +10,8 @@ namespace AgentApplication.Service.Core
     {
         public IEnumerable<Job> GetAllJobs();
         public Job GetJob(long id);
+        public  Task<Job> AddJob(Job entity);
+        public Job AddJobWithoutPublish(Job entity);
+        public IEnumerable<Job> GetJobsByUserId(long id);
     }
 }
